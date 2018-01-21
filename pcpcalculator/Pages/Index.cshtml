@@ -8,33 +8,33 @@
 <h1 class="page-header">PCP Finance Calculator</h1>
 <div class="row">
     <div class="col-xs-12">
-        <div class="panel">
+        <div class="panel panel-primary">
             <div class="panel-heading">Enter your details</div>
             <div class="panel-body">
                 <form method="post">
                     <div class="form-group">
                         <label for="price">Price: </label>
-                        <input id="price" class="form-control" type="text" asp-for="FinanceData.Price" />
+                        <input id="price" class="form-control" type="text" asp-for="FinanceData.Price" placeholder="£" />
                     </div>
                     <div class="form-group">
                         <label for="deposit">Deposit: </label>
-                        <input id="deposit" class="form-control" type="text" asp-for="FinanceData.Deposit" />
+                        <input id="deposit" class="form-control" type="text" asp-for="FinanceData.Deposit" placeholder="£" />
                     </div>
                     <div class="form-group">
                         <label for="dealerContribution">Dealer Contribution: </label>
-                        <input id="dealerContribution" class="form-control" type="text" asp-for="FinanceData.DealerContribution" />
+                        <input id="dealerContribution" class="form-control" type="text" asp-for="FinanceData.DealerContribution" placeholder="£" />
                     </div>
                     <div class="form-group">
                         <label for="term">Term: </label>
-                        <input id="term" class="form-control" type="text" asp-for="FinanceData.Term" />
+                        <input id="term" class="form-control" type="text" asp-for="FinanceData.Term" placeholder="Months" />
                     </div>
                     <div class="form-group">
                         <label for="rate">Rate: </label>
-                        <input id="rate" class="form-control" type="text" asp-for="FinanceData.Rate" />
+                        <input id="rate" class="form-control" type="text" asp-for="FinanceData.Rate" placeholder="%" />
                     </div>
                     <div class="form-group">
                         <label for="finalPayment">Final Payment: </label>
-                        <input id="finalPayment" class="form-control" type="text" asp-for="FinanceData.FinalPayment" />
+                        <input id="finalPayment" class="form-control" type="text" asp-for="FinanceData.FinalPayment" placeholder="£" />
                     </div>
                                 
                     <input class="btn btn-primary" type="submit" value="Submit" />
@@ -47,12 +47,14 @@
 {
 <div class="row">
     <div class="col-xs-12">
-        <div class="panel">
+        <div class="panel panel-primary">
             <div class="panel-heading">Repayment details</div>
             <div class="panel-body">
-                    <div class="form-group">
-                        <input class="form-control" type="text" asp-for="LoanRepaymentDetails.MonthlyRepayment" />
-                        <input class="form-control" type="text" asp-for="LoanRepaymentDetails.TotalInterestAccrued" />
+                    <div class="form-group form-inline">
+                        <label>Monthly Payment:</label>
+                        <input class="form-control" readonly disabled type="text" asp-for="LoanRepaymentDetails.MonthlyRepayment" />
+                        <label>Total Interest</label>
+                        <input class="form-control" readonly disabled type="text" asp-for="LoanRepaymentDetails.TotalInterestAccrued" />
                     </div>
             </div>
         </div>
