@@ -13,6 +13,8 @@ namespace pcpcalculator.Models
 
         double TotalInterestCharged { get; }
 
-        double TotalCostOfFinance { get; }
+        double TotalPayable { get; }
+
+        double CostToBuy { get; }
     }
 }

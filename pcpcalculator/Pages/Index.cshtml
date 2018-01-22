@@ -13,13 +13,25 @@
             <div class="card text-white bg-primary">
                 <div class="card-header">Repayment details</div>
                 <div class="card-body">
-                    <div class="form-group form-inline">
+                    <div class="form-group form">
                         <label>Monthly Payment:</label>
                         <input class="form-control" readonly disabled
                                type="text" value="£@Model.LoanRepaymentDetails.MonthlyRepayment">
+                    </div>
+                    <div class="form-group form">
                         <label>Total Interest</label>
                         <input class="form-control" readonly disabled type="text"
-                               value="£@Model.LoanRepaymentDetails.TotalInterestAccrued">
+                                value="£@Model.LoanRepaymentDetails.TotalInterestAccrued">
+                    </div>
+                    <div class="form-group form">
+                        <label>Total Payable</label>
+                        <input class="form-control" readonly disabled type="text"
+                               value="£@Model.LoanRepaymentDetails.TotalPayable">
+                        <div class="form-group form">
+                            <label>Cost to Buy (finance + final payment)</label>
+                            <input class="form-control" readonly disabled type="text"
+                                   value="£@Model.LoanRepaymentDetails.CostToBuy">
+                        </div>
                     </div>
                 </div>
             </div>

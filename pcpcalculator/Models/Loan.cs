@@ -21,7 +21,7 @@ namespace pcpcalculator.Models
             this.numberOfMonths = numberOfMonths;
             monthlyInterestRate = annualInterest / 12;
             decimalMonthlyInterestRate = monthlyInterestRate / 100;
-            monthlyPayment = MonthlyPayment();
+            monthlyPayment = CalculateMonthlyPayment();
             Calculate();
         }
 
@@ -40,7 +40,24 @@ namespace pcpcalculator.Models
 
         public virtual double TotalInterestCharged => DebtPayments.Sum(p => p.InterestPaid);
 
-        public double TotalCostOfFinance => throw new NotImplementedException();
+        public double TotalPayable => MonthlyPayment() * numberOfMonths;
+
+        public double CostToBuy => TotalPayable;
+
+        public virtual double MonthlyPayment()
+        {
+            return monthlyPayment;
+        }
+
+        private double CalculateMonthlyPayment()
+        {
+            var OnePlusRate = 1 + decimalMonthlyInterestRate;
+            var top = (Math.Pow(OnePlusRate, numberOfMonths)) - 1;
+            var bottom = decimalMonthlyInterestRate * (Math.Pow(OnePlusRate, numberOfMonths));
+            var discountFactor = top / bottom;
+            var monthlyPayment = loanAmount / discountFactor;
+            return monthlyPayment;
+        }
 
         private void Calculate()
         {
@@ -48,7 +65,7 @@ namespace pcpcalculator.Models
             for (uint month = 0; month < numberOfMonths; month++)
             {
                 var interestAccrued = currentBalance * decimalMonthlyInterestRate;
-                var principalRepaid = Math.Round(monthlyPayment - interestAccrued, 2);
+                var principalRepaid = monthlyPayment - interestAccrued;
                 currentBalance -= principalRepaid;
                 DebtPayments.Add(new DebtPayment
                 {
@@ -58,18 +75,8 @@ namespace pcpcalculator.Models
                     Principal = principalRepaid,
                     RemainingDebt = Math.Round(currentBalance)
                 });
-                
-            }
-        }
 
-        public virtual double MonthlyPayment()
-        {
-            var OnePlusRate = 1 + decimalMonthlyInterestRate;
-            var top = (Math.Pow(OnePlusRate, numberOfMonths)) - 1;
-            var bottom = decimalMonthlyInterestRate * (Math.Pow(OnePlusRate, numberOfMonths));
-            var discountFactor = top / bottom;
-            var monthlyPayment = loanAmount / discountFactor;
-            return Math.Round(monthlyPayment, 2);
+            }
         }
     }
 }

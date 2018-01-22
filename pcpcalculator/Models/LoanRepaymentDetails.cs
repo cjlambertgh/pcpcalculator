@@ -14,14 +14,14 @@ namespace pcpcalculator.Models
             this.loan = loan;
         }
 
-        public double MonthlyRepayment => loan.MonthlyPayment();
+        public double MonthlyRepayment => Math.Round(loan.MonthlyPayment(), 2);
 
         public IEnumerable<DebtPayment> Repayments => loan.DebtPayments;
 
         public double TotalInterestAccrued => Math.Round(loan.TotalInterestCharged, 2);
 
-        public double TotalCostOfDebt => (loan.DebtPayments.Sum(p => p.TotalPayment));
+        public double TotalPayable => Math.Round(loan.TotalPayable, 2);
             
-
+        public double CostToBuy => Math.Round(loan.CostToBuy, 2);
     }
 }
