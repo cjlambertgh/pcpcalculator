@@ -6,58 +6,74 @@
 }
 
 <h1 class="page-header">PCP Finance Calculator</h1>
+@if (Model.LoanRepaymentDetails != null)
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-white bg-primary">
+                <div class="card-header">Repayment details</div>
+                <div class="card-body">
+                    <div class="form-group form-inline">
+                        <label>Monthly Payment:</label>
+                        <input class="form-control" readonly disabled
+                               type="text" value="£@Model.LoanRepaymentDetails.MonthlyRepayment">
+                        <label>Total Interest</label>
+                        <input class="form-control" readonly disabled type="text"
+                               value="£@Model.LoanRepaymentDetails.TotalInterestAccrued">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+}
 <div class="row">
-    <div class="col-xs-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Enter your details</div>
-            <div class="panel-body">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header card ">Enter your details</div>
+            <div class="card-body">
                 <form method="post">
                     <div class="form-group">
-                        <label for="price">Price: </label>
-                        <input id="price" class="form-control" type="text" asp-for="FinanceData.Price" placeholder="£" />
+                        <label for="price">Price:</label>
+                        <input id="price" class="form-control" type="text" asp-for="FinanceData.Price"
+                               placeholder="&#xA3;">
+                        <span asp-validation-for="FinanceData.Price" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="deposit">Deposit: </label>
-                        <input id="deposit" class="form-control" type="text" asp-for="FinanceData.Deposit" placeholder="£" />
+                        <label for="deposit">Deposit:</label>
+                        <input id="deposit" class="form-control" type="text" asp-for="FinanceData.Deposit"
+                               placeholder="&#xA3;">
+                        <span asp-validation-for="FinanceData.Deposit" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="dealerContribution">Dealer Contribution: </label>
-                        <input id="dealerContribution" class="form-control" type="text" asp-for="FinanceData.DealerContribution" placeholder="£" />
+                        <label for="dealerContribution">Dealer Contribution:</label>
+                        <input id="dealerContribution" class="form-control"
+                               type="text" asp-for="FinanceData.DealerContribution" placeholder="&#xA3;">
+                        <span asp-validation-for="FinanceData.DealerContribution" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="term">Term: </label>
-                        <input id="term" class="form-control" type="text" asp-for="FinanceData.Term" placeholder="Months" />
+                        <label for="term">Term:</label>
+                        <input id="term" class="form-control" type="text" asp-for="FinanceData.Term"
+                               placeholder="Months">
+                        <span asp-validation-for="FinanceData.Term" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="rate">Rate: </label>
-                        <input id="rate" class="form-control" type="text" asp-for="FinanceData.Rate" placeholder="%" />
+                        <label for="rate">Rate:</label>
+                        <input id="rate" class="form-control" type="text" asp-for="FinanceData.Rate"
+                               placeholder="%">
+                        <span asp-validation-for="FinanceData.Rate" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="finalPayment">Final Payment: </label>
-                        <input id="finalPayment" class="form-control" type="text" asp-for="FinanceData.FinalPayment" placeholder="£" />
+                        <label for="finalPayment">Final Payment:</label>
+                        <input id="finalPayment" class="form-control" type="text"
+                               asp-for="FinanceData.FinalPayment" placeholder="&#xA3;">
+                        <span asp-validation-for="FinanceData.FinalPayment" class="text-danger"></span>
                     </div>
-                                
-                    <input class="btn btn-primary" type="submit" value="Submit" />
+                    <input class="btn btn-primary" type="submit" value="Submit">
                 </form>
             </div>
         </div>
     </div>
 </div>
-@if (Model.LoanRepaymentDetails != null)
-{
-<div class="row">
-    <div class="col-xs-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Repayment details</div>
-            <div class="panel-body">
-                    <div class="form-group form-inline">
-                        <label>Monthly Payment:</label>
-                        <input class="form-control" readonly disabled type="text" asp-for="LoanRepaymentDetails.MonthlyRepayment" />
-                        <label>Total Interest</label>
-                        <input class="form-control" readonly disabled type="text" asp-for="LoanRepaymentDetails.TotalInterestAccrued" />
-                    </div>
-            </div>
-        </div>
-    </div>
-</div>
-}
+
+

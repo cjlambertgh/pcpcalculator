@@ -19,17 +19,6 @@ namespace pcpcalculator.Pages
         }
         public void OnGet()
         {
-            //var financeData = new FinanceData
-            //{
-            //    Price = 10000,
-            //    Rate = 6,
-            //    DealerContribution = 0,
-            //    FinalPayment = 5000,
-            //    Deposit = 0,
-            //    Term = 36
-            //};
-            //var payments = financeCalculatorService.LoanRepayments(financeData);
-            //var pcpPayments = financeCalculatorService.PcpLoanRepayments(financeData);
         }
 
         [BindProperty]
@@ -37,14 +26,12 @@ namespace pcpcalculator.Pages
 
         public LoanRepaymentDetails LoanRepaymentDetails { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                return Page();
-            }
-
-            LoanRepaymentDetails = financeCalculatorService.PcpLoanRepayments(FinanceData);
+                LoanRepaymentDetails = financeCalculatorService.PcpLoanRepayments(FinanceData);
+            }            
             return Page();
         }
 
