@@ -40,6 +40,8 @@ namespace pcpcalculator.Models
 
         public virtual double TotalInterestCharged => DebtPayments.Sum(p => p.InterestPaid);
 
+        public double TotalCostOfFinance => throw new NotImplementedException();
+
         private void Calculate()
         {
             var currentBalance = loanAmount;

@@ -12,5 +12,7 @@ namespace pcpcalculator.Models
         IList<DebtPayment> DebtPayments { get; }
 
         double TotalInterestCharged { get; }
+
+        double TotalCostOfFinance { get; }
     }
 }

@@ -19,5 +19,9 @@ namespace pcpcalculator.Models
         public IEnumerable<DebtPayment> Repayments => loan.DebtPayments;
 
         public double TotalInterestAccrued => Math.Round(loan.TotalInterestCharged, 2);
+
+        public double TotalCostOfDebt => (loan.DebtPayments.Sum(p => p.TotalPayment));
+            
+
     }
 }
