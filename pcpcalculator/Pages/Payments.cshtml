@@ -1,11 +1,43 @@
 ﻿@page
-@model IndexModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model PaymentsModel
 @{
-    ViewData["Title"] = "Calculate PCP Repayments";
 }
 
 <h1 class="page-header">PCP Finance Calculator</h1>
+@if (Model.LoanRepaymentDetails != null)
+{
+    <div class="row">
+        <div class="col-12">
+            <a asp-page="/Index">< Back</a>
+            <div class="card text-white bg-primary">
+                <div class="card-header">Repayment details</div>
+                <div class="card-body">
+                    <div class="form-group form">
+                        <label>Monthly Payment:</label>
+                        <input class="form-control" readonly disabled
+                               type="text" value="£@Model.LoanRepaymentDetails.MonthlyRepayment">
+                    </div>
+                    <div class="form-group form">
+                        <label>Total Interest</label>
+                        <input class="form-control" readonly disabled type="text"
+                               value="£@Model.LoanRepaymentDetails.TotalInterestAccrued">
+                    </div>
+                    <div class="form-group form">
+                        <label>Total Payable</label>
+                        <input class="form-control" readonly disabled type="text"
+                               value="£@Model.LoanRepaymentDetails.TotalPayable">
+                        <div class="form-group form">
+                            <label>Cost to Buy (finance + final payment)</label>
+                            <input class="form-control" readonly disabled type="text"
+                                   value="£@Model.LoanRepaymentDetails.CostToBuy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+}
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -54,19 +86,6 @@
         </div>
     </div>
 </div>
-<br />
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                PCP (Personal Contract Purchase) finance is a method of buying a car where you pay for a portion of the value over an agreed period of time. At the end of the term you can either pay the final value (GMFV) and own the car, or trade the car in and use any equity towards the cost of the next vehicle.
 
-                Car leasing (lease hire or PCH) is similar to PCP however the car will usually be returned at the end of the agreement with no option to purchase. To calculate and compare overall costs of leasing click here or use the menu navigation menu above.
-
-                Simply enter the details below and your monthly payment will be calculated.
-            </div>
-        </div>
-    </div>
-</div>
 
 

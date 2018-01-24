@@ -11,12 +11,6 @@ namespace pcpcalculator.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly IFinanceCalculatorService financeCalculatorService;
-
-        public IndexModel(IFinanceCalculatorService financeCalculatorService)
-        {
-            this.financeCalculatorService = financeCalculatorService;
-        }
         public void OnGet()
         {
         }
@@ -24,22 +18,22 @@ namespace pcpcalculator.Pages
         [BindProperty]
         public FinanceData FinanceData { get; set; }
 
-        public LoanRepaymentDetails LoanRepaymentDetails { get; set; }
-
         public IActionResult OnPost()
         {
-            if(ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
-                LoanRepaymentDetails = financeCalculatorService.PcpLoanRepayments(FinanceData);
-            }            
-            return Page();
+                return Page();
+            }
+
+            return RedirectToPage("Payments", new
+            {
+                price = FinanceData.Price,
+                deposit = FinanceData.Deposit,
+                dealer = FinanceData.DealerContribution,
+                term = FinanceData.Term,
+                rate = FinanceData.Rate,
+                gmfv = FinanceData.FinalPayment
+            });
         }
-
-    }
-
-    public class FinanceResult
-    {
-        FinanceData FinanceData { get; set; }
-
     }
 }
