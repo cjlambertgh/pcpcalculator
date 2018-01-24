@@ -3,9 +3,10 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Calculate PCP Repayments";
+    ViewData["PageHeader"] = "PCP Finance Calculator";
 }
 
-<h1 class="page-header">PCP Finance Calculator</h1>
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -55,15 +56,46 @@
     </div>
 </div>
 <br />
+@* full screen banner *@
+<div class="d-none d-md-block">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- leader -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-5648791484769694"
+         data-ad-slot="1617944920"></ins>
+    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br />
+</div>
+@* mobile banner *@
+<div class="d-md-none">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- large mobile banner -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:320px;height:100px"
+         data-ad-client="ca-pub-5648791484769694"
+         data-ad-slot="3558121194"></ins>
+    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>       
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                PCP (Personal Contract Purchase) finance is a method of buying a car where you pay for a portion of the value over an agreed period of time. At the end of the term you can either pay the final value (GMFV) and own the car, or trade the car in and use any equity towards the cost of the next vehicle.
-
-                Car leasing (lease hire or PCH) is similar to PCP however the car will usually be returned at the end of the agreement with no option to purchase. To calculate and compare overall costs of leasing click here or use the menu navigation menu above.
-
-                Simply enter the details below and your monthly payment will be calculated.
+                <p>
+                    PCP (Personal Contract Purchase) finance is a method of buying a car where you pay for a portion of the value over an agreed period of time. 
+                    At the end of the term you can either pay the final value (GMFV) and own the car, or trade the car in and use any equity towards the cost of the next vehicle.
+                </p>
+                <p>
+                    Car leasing (lease hire or PCH) is similar to PCP however the car will usually be returned at the end of the agreement with no option to purchase.
+                </p>
+                <p>
+                    Simply enter the details above and your monthly payment will be calculated.
+                </p>
+                
             </div>
         </div>
     </div>
