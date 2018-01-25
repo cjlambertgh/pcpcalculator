@@ -2,7 +2,12 @@
 @model PaymentsModel
 @{
 }
-
+@section Meta {
+    <meta property="og:title" content="Online PCP Finance Calculator Tool - Repayment Details" />
+    <meta property="og:url" content="@($"{Request.HttpContext.Request.Scheme}://{Request.HttpContext.Request.Host}{Request.HttpContext.Request.Path}{Request.HttpContext.Request.QueryString}")" />
+    <meta property="og:description" content="Use this tool to calculate PCP finance monthly payments and how much it will cost in interest.
+          Repayments for current details: £@Model.LoanRepaymentDetails.MonthlyRepayment/month for @Model.FinanceData.Term months" />    
+}
 <h1 class="page-header">PCP Finance Calculator</h1>
 @if (Model.LoanRepaymentDetails != null)
 {
@@ -62,7 +67,7 @@
     <script>
                         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-</div>       
+</div>
 <div class="row">
     <div class="col-12">
         <div class="card">
