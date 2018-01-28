@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using pcpcalculator.Services;
+using NWebsec;
 
 namespace pcpcalculator
 {
@@ -39,6 +40,13 @@ namespace pcpcalculator
             {
                 app.UseExceptionHandler("/Error");
             }
+
+            //app.UseCsp(op => op.DefaultSources(s => s.Self()));
+            app.UseHsts(hsts => hsts.MaxAge(365).UpgradeInsecureRequests().IncludeSubdomains());
+            app.UseXContentTypeOptions();
+            app.UseReferrerPolicy(opts => opts.NoReferrer());
+
+            app.UseXXssProtection(o => o.EnabledWithBlockMode());
 
             app.UseStaticFiles();
 
