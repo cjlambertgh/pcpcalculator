@@ -1,4 +1,9 @@
-﻿<a href="mailto:?subject=PCP Finance Quote&amp;body=PCP Finance Quote @Context.Request.Host@Context.Request.Path@Context.Request.QueryString "
+﻿@{ 
+    var url = $"{@Context.Request.Scheme}://{@Context.Request.Host}{@Context.Request.Path}{@Context.Request.QueryString}";
+    var shareUrl = Html.UrlEncoder.Encode(url);
+}
+<a href="mailto:?subject=PCP Finance Quote&amp;body=PCP Finance Quote @shareUrl "
    title="Share by Email">
     <i class="fa fa-envelope"></i>
 </a>
+

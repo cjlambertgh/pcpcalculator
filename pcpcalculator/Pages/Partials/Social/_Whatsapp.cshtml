@@ -1,1 +1,5 @@
-﻿<a href="whatsapp://send?text=PCP%20Finance%20Quote" data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-4x" aria-hidden="true"></i></a>
+﻿@{
+    var url = $"{@Context.Request.Scheme}://{@Context.Request.Host}{@Context.Request.Path}{@Context.Request.QueryString}";
+    var shareUrl = Html.UrlEncoder.Encode(url);
+}
+<a href="whatsapp://send?text=PCP%20Finance%20Quote:@shareUrl" data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-4x" aria-hidden="true"></i></a>
